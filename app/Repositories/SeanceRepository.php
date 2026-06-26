@@ -28,6 +28,24 @@ class SeanceRepository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getActivites()
+    {
+        $sql = "SELECT * FROM activite";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function getEquipements()
+    {
+        $sql = "SELECT * FROM equipement";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
     public function abonnementValide($id_adherent)
     {
         $sql = "SELECT COUNT(*)
@@ -45,11 +63,13 @@ class SeanceRepository
         $date_seance,
         $duree,
         $id_adherent,
-        $id_salle
+        $id_salle,
+        $id_activite,
+        $id_equipement
     ){
         $sql = "INSERT INTO seance
-                (date_seance,duree,id_adherent,id_salle)
-                VALUES(?,?,?,?)";
+                (date_seance,duree,id_adherent,id_salle,id_activite,id_equipement)
+                VALUES(?,?,?,?,?,?)";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -57,31 +77,39 @@ class SeanceRepository
             $date_seance,
             $duree,
             $id_adherent,
-            $id_salle
+            $id_salle,
+            $id_activite,
+            $id_equipement
         ]);
     }
 
     public function update(
-        $id,
+    $id,
+    $date_seance,
+    $duree,
+    $id_salle,
+    $id_activite,
+    $id_equipement
+){
+    $sql = "UPDATE seance
+            SET date_seance = ?,
+                duree = ?,
+                id_salle = ?,
+                id_activite = ?,
+                id_equipement = ?
+            WHERE id_seance = ?";
+
+    $stmt = $this->conn->prepare($sql);
+
+    return $stmt->execute([
         $date_seance,
         $duree,
-        $id_salle
-    ){
-        $sql = "UPDATE seance
-                SET date_seance = ?,
-                    duree = ?,
-                    id_salle = ?
-                WHERE id_seance = ?";
-
-        $stmt = $this->conn->prepare($sql);
-
-        return $stmt->execute([
-            $date_seance,
-            $duree,
-            $id_salle,
-            $id
-        ]);
-    }
+        $id_salle,
+        $id_activite,
+        $id_equipement,
+        $id
+    ]);
+}
 
     public function delete($id)
     {

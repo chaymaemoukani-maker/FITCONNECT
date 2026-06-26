@@ -65,7 +65,7 @@ class AdherentRepository
                 prenom = ?,
                 email = ?,
                 telephone = ?,
-                id_salle = ?
+                id_salle = ?   
             WHERE id_adherent = ?";
 
     $stmt = $this->conn->prepare($sql);
@@ -79,6 +79,7 @@ class AdherentRepository
         $id
     ]);
 }
+
 public function delete($id)
 {
     // Vérifier séances

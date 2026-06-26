@@ -26,13 +26,18 @@ class SeanceController
 
     public function create()
     {
+        $activites = $this->service->getActivites();
+        $equipements = $this->service->getEquipements();
+
         if(isset($_POST['ajouter']))
         {
             $success = $this->service->add(
                 $_POST['date_seance'],
                 $_POST['duree'],
                 $_POST['id_adherent'],
-                $_POST['id_salle']
+                $_POST['id_salle'],
+                $_POST['id_activite'],
+                $_POST['id_equipement']
             );
 
             if(!$success)
@@ -56,7 +61,9 @@ class SeanceController
                 $id,
                 $_POST['date_seance'],
                 $_POST['duree'],
-                $_POST['id_salle']
+                $_POST['id_salle'],
+                $_POST['id_activite'],
+                $_POST['id_equipement']
             );
 
             header("Location: index.php?module=seance");
@@ -64,6 +71,9 @@ class SeanceController
         }
 
         $data = $this->service->getById($id);
+
+        $activites = $this->service->getActivites();
+        $equipements = $this->service->getEquipements();
 
         require __DIR__ . '/../../views/seances/modifier.php';
     }
