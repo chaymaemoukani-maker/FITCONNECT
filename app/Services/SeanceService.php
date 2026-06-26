@@ -23,9 +23,7 @@ class SeanceService
         $date_seance,
         $duree,
         $id_adherent,
-        $id_salle,
-        $id_activite,
-        $id_equipement
+        $id_salle
     ){
         if($this->repository->abonnementValide($id_adherent) == 0)
         {
@@ -36,9 +34,7 @@ class SeanceService
             $date_seance,
             $duree,
             $id_adherent,
-            $id_salle,
-            $id_activite,
-            $id_equipement
+            $id_salle
         );
     }
 
@@ -46,17 +42,13 @@ class SeanceService
         $id,
         $date_seance,
         $duree,
-        $id_salle,
-        $id_activite,
-        $id_equipement
+        $id_salle
     ){
         return $this->repository->update(
             $id,
             $date_seance,
             $duree,
-            $id_salle,
-            $id_activite,
-            $id_equipement
+            $id_salle
         );
     }
 

@@ -40,15 +40,7 @@
             <input type="number" name="id_salle" class="form-control" required>
         </div>
 
-        <div class="mb-3">
-            <label>ID Activité</label>
-            <input type="number" name="id_activite" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label>ID Équipement</label>
-            <input type="number" name="id_equipement" class="form-control">
-        </div>
+        
 
         <button type="submit" name="ajouter" class="btn btn-success">
             Ajouter

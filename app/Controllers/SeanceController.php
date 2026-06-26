@@ -32,9 +32,7 @@ class SeanceController
                 $_POST['date_seance'],
                 $_POST['duree'],
                 $_POST['id_adherent'],
-                $_POST['id_salle'],
-                $_POST['id_activite'],
-                $_POST['id_equipement']
+                $_POST['id_salle']
             );
 
             if(!$success)
@@ -58,9 +56,7 @@ class SeanceController
                 $id,
                 $_POST['date_seance'],
                 $_POST['duree'],
-                $_POST['id_salle'],
-                $_POST['id_activite'],
-                $_POST['id_equipement']
+                $_POST['id_salle']
             );
 
             header("Location: index.php?module=seance");

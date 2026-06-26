@@ -44,9 +44,12 @@
                value="<?= $data['id_salle']; ?>">
     </div>
 
-    <button type="submit" class="btn btn-success">
-        Enregistrer
-    </button>
+    <button
+    type="submit"
+    name="modifier"
+    class="btn btn-success">
+    Enregistrer
+</button>
 
 </form>
 

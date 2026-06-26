@@ -37,21 +37,7 @@
                    value="<?= $data['id_salle']; ?>">
         </div>
 
-        <div class="mb-3">
-            <label>ID Activité</label>
-            <input type="number"
-                   name="id_activite"
-                   class="form-control"
-                   value="<?= $data['id_activite']; ?>">
-        </div>
-
-        <div class="mb-3">
-            <label>ID Équipement</label>
-            <input type="number"
-                   name="id_equipement"
-                   class="form-control"
-                   value="<?= $data['id_equipement']; ?>">
-        </div>
+        
 
         <button type="submit"
                 name="modifier"

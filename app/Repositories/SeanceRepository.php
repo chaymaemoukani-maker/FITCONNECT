@@ -12,7 +12,6 @@ class SeanceRepository
     public function getAll()
     {
         $sql = "SELECT * FROM seance";
-
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
@@ -21,8 +20,7 @@ class SeanceRepository
 
     public function getById($id)
     {
-        $sql = "SELECT * FROM seance
-                WHERE id_seance = ?";
+        $sql = "SELECT * FROM seance WHERE id_seance = ?";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
@@ -47,13 +45,11 @@ class SeanceRepository
         $date_seance,
         $duree,
         $id_adherent,
-        $id_salle,
-        $id_activite,
-        $id_equipement
+        $id_salle
     ){
         $sql = "INSERT INTO seance
-                (date_seance,duree,id_adherent,id_salle,id_activite,id_equipement)
-                VALUES(?,?,?,?,?,?)";
+                (date_seance,duree,id_adherent,id_salle)
+                VALUES(?,?,?,?)";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -61,9 +57,7 @@ class SeanceRepository
             $date_seance,
             $duree,
             $id_adherent,
-            $id_salle,
-            $id_activite,
-            $id_equipement
+            $id_salle
         ]);
     }
 
@@ -71,16 +65,12 @@ class SeanceRepository
         $id,
         $date_seance,
         $duree,
-        $id_salle,
-        $id_activite,
-        $id_equipement
+        $id_salle
     ){
         $sql = "UPDATE seance
                 SET date_seance = ?,
                     duree = ?,
-                    id_salle = ?,
-                    id_activite = ?,
-                    id_equipement = ?
+                    id_salle = ?
                 WHERE id_seance = ?";
 
         $stmt = $this->conn->prepare($sql);
@@ -89,16 +79,13 @@ class SeanceRepository
             $date_seance,
             $duree,
             $id_salle,
-            $id_activite,
-            $id_equipement,
             $id
         ]);
     }
 
     public function delete($id)
     {
-        $sql = "DELETE FROM seance
-                WHERE id_seance = ?";
+        $sql = "DELETE FROM seance WHERE id_seance = ?";
 
         $stmt = $this->conn->prepare($sql);
 
