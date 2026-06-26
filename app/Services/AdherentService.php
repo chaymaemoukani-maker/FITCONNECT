@@ -18,6 +18,10 @@ class AdherentService
     {
         return $this->repository->getById($id);
     }
+    public function getSalles()
+{
+    return $this->repository->getSalles();
+}
 
     public function add(
         $nom,

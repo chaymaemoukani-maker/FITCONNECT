@@ -77,6 +77,22 @@ class="form-control"
 required>
 
 </div>
+<div class="mb-3">
+    <label>Salle</label>
+
+    <select name="id_salle" class="form-control" required>
+
+        <?php while($salle = $salles->fetch(PDO::FETCH_ASSOC)) { ?>
+
+            <option value="<?= $salle['id_salle']; ?>">
+                <?= $salle['nom_salle']; ?>
+            </option>
+
+        <?php } ?>
+
+    </select>
+</div>
+
 
 <button
 type="submit"

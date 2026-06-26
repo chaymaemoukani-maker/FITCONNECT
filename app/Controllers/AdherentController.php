@@ -24,6 +24,7 @@ class AdherentController
 require __DIR__ . '/../../views/adherents/index.php';    }
 public function create()
 {
+    $salles = $this->service->getSalles();
     if(isset($_POST['ajouter']))
     {
         $this->service->add(

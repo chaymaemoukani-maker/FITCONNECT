@@ -17,6 +17,15 @@ class AdherentRepository
 
         return $stmt;
     }
+    public function getSalles()
+{
+    $sql = "SELECT * FROM salle";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
 
     public function getById($id)
     {
