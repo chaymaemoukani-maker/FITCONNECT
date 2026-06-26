@@ -11,7 +11,22 @@ class SeanceRepository
 
     public function getAll()
     {
-        $sql = "SELECT * FROM seance";
+        $sql = "SELECT
+            seance.*,
+            adherent.nom,
+            adherent.prenom,
+            salle.nom_salle,
+            activite.nom_activite,
+            equipement.nom_equipement
+        FROM seance
+        INNER JOIN adherent
+            ON seance.id_adherent = adherent.id_adherent
+        INNER JOIN salle
+            ON seance.id_salle = salle.id_salle
+        INNER JOIN activite
+            ON seance.id_activite = activite.id_activite
+        LEFT JOIN equipement
+            ON seance.id_equipement = equipement.id_equipement";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
@@ -58,6 +73,26 @@ class SeanceRepository
 
         return $stmt->fetchColumn();
     }
+    public function getAdherents()
+{
+    $sql = "SELECT id_adherent, nom, prenom FROM adherent";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+
+public function getSalles()
+{
+    $sql = "SELECT id_salle, nom_salle FROM salle";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
 
     public function add(
         $date_seance,

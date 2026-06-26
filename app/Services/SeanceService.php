@@ -18,6 +18,15 @@ class SeanceService
     {
         return $this->repository->getById($id);
     }
+    public function getAdherents()
+{
+    return $this->repository->getAdherents();
+}
+
+public function getSalles()
+{
+    return $this->repository->getSalles();
+}
 
    public function add(
     $date_seance,

@@ -49,6 +49,10 @@ class SeanceController
             header("Location: index.php?module=seance");
             exit();
         }
+        $adherents = $this->service->getAdherents();
+$salles = $this->service->getSalles();
+$activites = $this->service->getActivites();
+$equipements = $this->service->getEquipements();
 
         require __DIR__ . '/../../views/seances/ajouter.php';
     }

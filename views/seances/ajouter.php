@@ -31,22 +31,56 @@
         </div>
 
         <div class="mb-3">
-            <label>ID Adhérent</label>
-            <input type="number" name="id_adherent" class="form-control" required>
+            <label>Adhérent</label>
+            <select name="id_adherent" class="form-control" required>
+                <?php while($a = $adherents->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?= $a['id_adherent']; ?>">
+                        <?= $a['nom']; ?> <?= $a['prenom']; ?>
+                    </option>
+                <?php } ?>
+            </select>
         </div>
 
         <div class="mb-3">
-            <label>ID Salle</label>
-            <input type="number" name="id_salle" class="form-control" required>
+            <label>Salle</label>
+            <select name="id_salle" class="form-control" required>
+                <?php while($s = $salles->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?= $s['id_salle']; ?>">
+                        <?= $s['nom_salle']; ?>
+                    </option>
+                <?php } ?>
+            </select>
         </div>
 
-        
+        <div class="mb-3">
+            <label>Activité</label>
+            <select name="id_activite" class="form-control" required>
+                <?php while($act = $activites->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?= $act['id_activite']; ?>">
+                        <?= $act['nom_activite']; ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Équipement</label>
+            <select name="id_equipement" class="form-control">
+                <option value="">Aucun</option>
+
+                <?php while($eq = $equipements->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?= $eq['id_equipement']; ?>">
+                        <?= $eq['nom_equipement']; ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
 
         <button type="submit" name="ajouter" class="btn btn-success">
             Ajouter
         </button>
 
-        <a href="index.php" class="btn btn-secondary">
+        <a href="index.php?module=seance" class="btn btn-secondary">
             Retour
         </a>
 

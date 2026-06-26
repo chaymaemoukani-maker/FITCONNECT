@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter une séance</title>
+    <title>Liste des Séances</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -10,47 +10,67 @@
 
 <div class="container mt-5">
 
-    <h2>Ajouter une séance</h2>
+    <h2>Liste des Séances</h2>
 
-    <?php if(!empty($message)) : ?>
-        <div class="alert alert-danger">
-            <?= $message ?>
-        </div>
-    <?php endif; ?>
+    <a href="index.php?module=seance&action=create"
+       class="btn btn-primary mb-3">
+        Ajouter une séance
+    </a>
 
-    <form method="POST">
+    <table class="table table-bordered table-striped">
 
-        <div class="mb-3">
-            <label>Date séance</label>
-            <input type="date" name="date_seance" class="form-control" required>
-        </div>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Durée</th>
+                <th>Adhérent</th>
+                <th>Salle</th>
+                <th>Activité</th>
+                <th>Équipement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-        <div class="mb-3">
-            <label>Durée (minutes)</label>
-            <input type="number" name="duree" class="form-control" required>
-        </div>
+        <tbody>
 
-        <div class="mb-3">
-            <label>ID Adhérent</label>
-            <input type="number" name="id_adherent" class="form-control" required>
-        </div>
+        <?php while($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
 
-        <div class="mb-3">
-            <label>ID Salle</label>
-            <input type="number" name="id_salle" class="form-control" required>
-        </div>
+           <tr>
 
-       
+    <td><?= $row['id_seance']; ?></td>
 
-        <button type="submit" name="ajouter" class="btn btn-success">
-            Ajouter
-        </button>
+    <td><?= $row['date_seance']; ?></td>
 
-        <a href="index.php" class="btn btn-secondary">
-            Retour
+    <td><?= $row['duree']; ?> min</td>
+
+    <td><?= $row['nom']; ?> <?= $row['prenom']; ?></td>
+
+    <td><?= $row['nom_salle']; ?></td>
+
+    <td><?= $row['nom_activite']; ?></td>
+
+    <td><?= !empty($row['nom_equipement']) ? $row['nom_equipement'] : 'Aucun'; ?></td>
+
+    <td>
+        <a href="index.php?module=seance&action=edit&id=<?= $row['id_seance']; ?>"
+           class="btn btn-warning btn-sm">
+            Modifier
         </a>
 
-    </form>
+        <a href="index.php?module=seance&action=delete&id=<?= $row['id_seance']; ?>"
+           class="btn btn-danger btn-sm"
+           onclick="return confirm('Supprimer cette séance ?')">
+            Supprimer
+        </a>
+    </td>
+
+</tr>
+        <?php } ?>
+
+        </tbody>
+
+    </table>
 
 </div>
 
