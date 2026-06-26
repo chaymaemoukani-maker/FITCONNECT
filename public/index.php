@@ -12,6 +12,7 @@ if($module == 'home')
     require "../views/home.php";
     exit;
 }
+
 switch($module)
 {
     case 'abonnement':
@@ -19,7 +20,7 @@ switch($module)
         break;
 
     case 'seance':
-        $controller = new SeanceController();
+        $controller = new SeanceController ();
         break;
 
     default:

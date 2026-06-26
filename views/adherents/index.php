@@ -53,11 +53,11 @@
                 <td><?= $row['date_inscription']; ?></td>
 
                 <td>
-                    <a href="index.php?action=edit&id=<?= $row['id_adherent']; ?>"
-       class="btn btn-warning btn-sm">
+                    <a href="index.php?module=adherent&action=edit&id=<?= $row['id_adherent']; ?>"
+   class="btn btn-warning btn-sm">
     Modifier
 </a>
-<a href="index.php?action=delete&id=<?= $row['id_adherent']; ?>"
+<a href="index.php?module=adherent&action=delete&id=<?= $row['id_adherent']; ?>"
    class="btn btn-danger btn-sm"
    onclick="return confirm('Supprimer cet adhérent ?')">
     Supprimer

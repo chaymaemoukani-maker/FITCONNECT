@@ -1,67 +1,82 @@
 <?php
 
-class SeanceService
+require_once __DIR__ . '/../../config/Database.php';
+require_once __DIR__ . '/../Repositories/SeanceRepository.php';
+require_once __DIR__ . '/../Services/SeanceService.php';
+
+class SeanceController
 {
-    private $repository;
+    private $service;
 
-    public function __construct($repository)
+    public function __construct()
     {
-        $this->repository = $repository;
+        $db = (new Database())->connect();
+
+        $repository = new SeanceRepository($db);
+
+        $this->service = new SeanceService($repository);
     }
 
-    public function getAll()
+    public function index()
     {
-        return $this->repository->getAll();
+        $result = $this->service->getAll();
+
+        require __DIR__ . '/../../views/seances/index.php';
     }
 
-    public function getById($id)
+    public function create()
     {
-        return $this->repository->getById($id);
-    }
-
-    public function add(
-        $date_seance,
-        $duree,
-        $id_adherent,
-        $id_salle,
-        $id_activite,
-        $id_equipement
-    ){
-        if($this->repository->abonnementValide($id_adherent) == 0)
+        if(isset($_POST['ajouter']))
         {
-            return false;
+            $success = $this->service->add(
+                $_POST['date_seance'],
+                $_POST['duree'],
+                $_POST['id_adherent'],
+                $_POST['id_salle'],
+                $_POST['id_activite'],
+                $_POST['id_equipement']
+            );
+
+            if(!$success)
+            {
+                echo "L'adhérent ne possède pas un abonnement valide.";
+                return;
+            }
+
+            header("Location: index.php?module=seance");
+            exit();
         }
 
-        return $this->repository->add(
-            $date_seance,
-            $duree,
-            $id_adherent,
-            $id_salle,
-            $id_activite,
-            $id_equipement
-        );
+        require __DIR__ . '/../../views/seances/ajouter.php';
     }
 
-    public function update(
-        $id,
-        $date_seance,
-        $duree,
-        $id_salle,
-        $id_activite,
-        $id_equipement
-    ){
-        return $this->repository->update(
-            $id,
-            $date_seance,
-            $duree,
-            $id_salle,
-            $id_activite,
-            $id_equipement
-        );
+    public function edit($id)
+    {
+        if(isset($_POST['modifier']))
+        {
+            $this->service->update(
+                $id,
+                $_POST['date_seance'],
+                $_POST['duree'],
+                $_POST['id_salle'],
+                $_POST['id_activite'],
+                $_POST['id_equipement']
+            );
+
+            header("Location: index.php?module=seance");
+            exit();
+        }
+
+        $data = $this->service->getById($id);
+
+        require __DIR__ . '/../../views/seances/modifier.php';
     }
 
     public function delete($id)
     {
-        return $this->repository->delete($id);
+        $this->service->delete($id);
+
+        header("Location: index.php?module=seance");
+        exit();
     }
 }

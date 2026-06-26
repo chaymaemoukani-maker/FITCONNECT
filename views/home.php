@@ -46,10 +46,9 @@
                     <h3>👤 Adhérents</h3>
                     <p>Gestion complète des adhérents</p>
 
-                    <a href="index.php?module=adherent"
-                       class="btn btn-primary">
-                        Accéder
-                    </a>
+                    <a href="../public/index.php?module=adherent" class="btn btn-primary">
+    Accéder
+</a>
                 </div>
             </div>
         </div>
@@ -60,10 +59,9 @@
                     <h3>💳 Abonnements</h3>
                     <p>Gestion des abonnements</p>
 
-                    <a href="index.php?module=abonnement"
-                       class="btn btn-success">
-                        Accéder
-                    </a>
+                    <a href="../public/index.php?module=abonnement" class="btn btn-success">
+    Accéder
+</a>
                 </div>
             </div>
         </div>
@@ -74,10 +72,9 @@
                     <h3>🏃 Séances</h3>
                     <p>Gestion des séances</p>
 
-                    <a href="index.php?module=seance"
-                       class="btn btn-warning">
-                        Accéder
-                    </a>
+                    <a href="../public/index.php?module=seance" class="btn btn-warning">
+    Accéder
+</a>
                 </div>
             </div>
         </div>
