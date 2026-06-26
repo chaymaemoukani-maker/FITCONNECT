@@ -23,7 +23,6 @@ class AdherentService
         $nom,
         $prenom,
         $email,
-        $password,
         $telephone,
         $date,
         $id_salle
@@ -32,7 +31,6 @@ class AdherentService
             $nom,
             $prenom,
             $email,
-            $password,
             $telephone,
             $date,
             $id_salle

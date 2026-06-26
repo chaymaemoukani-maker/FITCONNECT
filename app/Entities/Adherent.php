@@ -6,7 +6,6 @@ class Adherent
     public $nom;
     public $prenom;
     public $email;
-    public $password;
     public $telephone;
     public $date_inscription;
     public $id_salle;
@@ -16,7 +15,6 @@ class Adherent
         $nom = null,
         $prenom = null,
         $email = null,
-        $password = null,
         $telephone = null,
         $date_inscription = null,
         $id_salle = null
@@ -25,7 +23,6 @@ class Adherent
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
-        $this->password = $password;
         $this->telephone = $telephone;
         $this->date_inscription = $date_inscription;
         $this->id_salle = $id_salle;

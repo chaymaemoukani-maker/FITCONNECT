@@ -30,7 +30,6 @@ public function create()
             $_POST['nom'],
             $_POST['prenom'],
             $_POST['email'],
-            $_POST['password'],
             $_POST['telephone'],
             $_POST['date_inscription'],
             $_POST['id_salle']

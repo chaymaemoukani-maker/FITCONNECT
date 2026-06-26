@@ -53,17 +53,6 @@ required>
 
 </div>
 
-<div class="mb-3">
-
-<label>Mot de passe</label>
-
-<input
-type="password"
-name="password"
-class="form-control"
-required>
-
-</div>
 
 <div class="mb-3">
 
