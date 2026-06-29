@@ -33,46 +33,62 @@
         <div class="mb-3">
             <label>Adhérent</label>
             <select name="id_adherent" class="form-control" required>
-                <?php while($a = $adherents->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?= $a['id_adherent']; ?>">
-                        <?= $a['nom']; ?> <?= $a['prenom']; ?>
+
+                <?php while($adherent = $adherents->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    <option value="<?= $adherent['id_adherent']; ?>">
+                        <?= $adherent['nom']; ?> <?= $adherent['prenom']; ?>
                     </option>
+
                 <?php } ?>
+
             </select>
         </div>
 
         <div class="mb-3">
             <label>Salle</label>
             <select name="id_salle" class="form-control" required>
-                <?php while($s = $salles->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?= $s['id_salle']; ?>">
-                        <?= $s['nom_salle']; ?>
+
+                <?php while($salle = $salles->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    <option value="<?= $salle['id_salle']; ?>">
+                        <?= $salle['nom_salle']; ?>
                     </option>
+
                 <?php } ?>
+
             </select>
         </div>
 
         <div class="mb-3">
             <label>Activité</label>
             <select name="id_activite" class="form-control" required>
-                <?php while($act = $activites->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?= $act['id_activite']; ?>">
-                        <?= $act['nom_activite']; ?>
+
+                <?php while($activite = $activites->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    <option value="<?= $activite['id_activite']; ?>">
+                        <?= $activite['nom_activite']; ?>
                     </option>
+
                 <?php } ?>
+
             </select>
         </div>
 
         <div class="mb-3">
             <label>Équipement</label>
             <select name="id_equipement" class="form-control">
+
                 <option value="">Aucun</option>
 
-                <?php while($eq = $equipements->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?= $eq['id_equipement']; ?>">
-                        <?= $eq['nom_equipement']; ?>
+                <?php while($equipement = $equipements->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    <option value="<?= $equipement['id_equipement']; ?>">
+                        <?= $equipement['nom_equipement']; ?>
                     </option>
+
                 <?php } ?>
+
             </select>
         </div>
 

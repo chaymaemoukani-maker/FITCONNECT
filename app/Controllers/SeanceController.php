@@ -26,6 +26,8 @@ class SeanceController
 
     public function create()
     {
+        $adherents = $this->service->getAdherents();
+        $salles = $this->service->getSalles();
         $activites = $this->service->getActivites();
         $equipements = $this->service->getEquipements();
 
@@ -50,9 +52,11 @@ class SeanceController
             exit();
         }
         $adherents = $this->service->getAdherents();
-$salles = $this->service->getSalles();
-$activites = $this->service->getActivites();
-$equipements = $this->service->getEquipements();
+        $salles = $this->service->getSalles();
+        $activites = $this->service->getActivites();
+        $equipements = $this->service->getEquipements();
+
+        
 
         require __DIR__ . '/../../views/seances/ajouter.php';
     }
