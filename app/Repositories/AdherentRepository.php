@@ -10,11 +10,20 @@ class AdherentRepository
     }
 
     public function getAll()
-    {
-        $stmt = $this->conn->prepare("SELECT * FROM adherent");
-        $stmt->execute();
-        return $stmt;
-    }
+{
+    $sql = "SELECT
+                adherent.*,
+                salle.nom_salle
+            FROM adherent
+            LEFT JOIN salle
+                ON adherent.id_salle = salle.id_salle
+            ORDER BY adherent.id_adherent";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
 
     public function getSalles()
     {

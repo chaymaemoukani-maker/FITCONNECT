@@ -193,6 +193,7 @@
                     <th>Email</th>
                     <th>Téléphone</th>
                     <th>Date d'inscription</th>
+                    <th>Salle</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -208,6 +209,7 @@
                     <td><?= $row['email']; ?></td>
                     <td><?= $row['telephone']; ?></td>
                     <td><?= $row['date_inscription']; ?></td>
+                    <td><?= $row['nom_salle']; ?></td>
                     <td style="display:flex;gap:6px;align-items:center;">
                         <a href="index.php?module=adherent&action=edit&id=<?= $row['id_adherent']; ?>" class="jp-btn jp-btn-edit">Modifier</a>
                         <a href="index.php?module=adherent&action=delete&id=<?= $row['id_adherent']; ?>"
