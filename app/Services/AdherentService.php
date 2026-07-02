@@ -41,23 +41,25 @@ class AdherentService
         );
     }
 
-    public function update(
+   public function update(
+    $id,
+    $nom,
+    $prenom,
+    $email,
+    $telephone,
+    $date_inscription,
+    $id_salle
+){
+    return $this->repository->update(
         $id,
         $nom,
         $prenom,
         $email,
         $telephone,
+        $date_inscription,
         $id_salle
-    ){
-        return $this->repository->update(
-            $id,
-            $nom,
-            $prenom,
-            $email,
-            $telephone,
-            $id_salle
-        );
-    }
+    );
+}
 
     public function delete($id)
     {

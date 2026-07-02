@@ -218,6 +218,13 @@
                 <label>Téléphone</label>
                 <input type="text" name="telephone" value="<?= $data['telephone']; ?>">
             </div>
+            <div class="jp-field">
+    <label>Date d'inscription</label>
+    <input
+        type="date"
+        name="date_inscription"
+        value="<?= $data['date_inscription']; ?>">
+</div>
 
             <div class="jp-field">
     <label>Salle</label>

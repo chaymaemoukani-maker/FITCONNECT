@@ -64,34 +64,36 @@ class AdherentRepository
         ]);
     }
 
-    public function update(
-        $id,
-        $nom,
-        $prenom,
-        $email,
-        $telephone,
-        $id_salle
-    ) {
-        $stmt = $this->conn->prepare("
-            UPDATE adherent
+   public function update(
+    $id,
+    $nom,
+    $prenom,
+    $email,
+    $telephone,
+    $date_inscription,
+    $id_salle
+){
+    $sql = "UPDATE adherent
             SET nom = ?,
                 prenom = ?,
                 email = ?,
                 telephone = ?,
+                date_inscription = ?,
                 id_salle = ?
-            WHERE id_adherent = ?
-        ");
+            WHERE id_adherent = ?";
 
-        return $stmt->execute([
-            $nom,
-            $prenom,
-            $email,
-            $telephone,
-            $id_salle,
-            $id
-        ]);
-    }
+    $stmt = $this->conn->prepare($sql);
 
+    return $stmt->execute([
+        $nom,
+        $prenom,
+        $email,
+        $telephone,
+        $date_inscription,
+        $id_salle,
+        $id
+    ]);
+}
     public function delete($id)
     {
         $stmt = $this->conn->prepare("SELECT COUNT(*) FROM seance WHERE id_adherent = ?");

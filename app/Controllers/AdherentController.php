@@ -47,13 +47,14 @@ public function edit($id)
     if(isset($_POST['modifier']))
     {
         $this->service->update(
-            $id,
-            $_POST['nom'],
-            $_POST['prenom'],
-            $_POST['email'],
-            $_POST['telephone'],
-            $_POST['id_salle']
-        );
+    $id,
+    $_POST['nom'],
+    $_POST['prenom'],
+    $_POST['email'],
+    $_POST['telephone'],
+    $_POST['date_inscription'],
+    $_POST['id_salle']
+);
 
         header("Location: index.php?module=adherent");
         exit();
