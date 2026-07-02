@@ -139,6 +139,14 @@
             font-size: 0.78rem;
             margin-top: 40px;
             border-top: var(--jp-border);
+            .jp-field select {
+    width: 100%;
+    padding: 10px 13px;
+    border: var(--jp-border);
+    border-radius: 2px;
+    background: var(--jp-bg);
+    font-family: 'Noto Sans JP', sans-serif;
+}
         }
     </style>
 </head>
@@ -181,9 +189,20 @@
             </div>
 
             <div class="jp-field">
-                <label>Statut</label>
-                <input type="text" name="statut" value="<?= $data['statut']; ?>">
-            </div>
+    <label>Statut</label>
+
+    <select name="statut" required>
+        <option value="actif"
+            <?= ($data['statut'] == 'actif') ? 'selected' : ''; ?>>
+            Actif
+        </option>
+
+        <option value="expire"
+            <?= ($data['statut'] == 'expire') ? 'selected' : ''; ?>>
+            Expiré
+        </option>
+    </select>
+</div>
 
             <div class="jp-actions">
                 <button type="submit" name="modifier" class="jp-btn jp-btn-save">Enregistrer</button>
