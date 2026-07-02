@@ -51,10 +51,11 @@ public function getSalles()
 );
     }
 
-   public function update(
+  public function update(
     $id,
     $date_seance,
     $duree,
+    $id_adherent,
     $id_salle,
     $id_activite,
     $id_equipement
@@ -63,12 +64,12 @@ public function getSalles()
         $id,
         $date_seance,
         $duree,
+        $id_adherent,
         $id_salle,
         $id_activite,
         $id_equipement
     );
 }
-
     public function delete($id)
     {
         return $this->repository->delete($id);

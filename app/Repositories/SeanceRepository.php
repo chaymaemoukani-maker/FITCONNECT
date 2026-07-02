@@ -119,11 +119,11 @@ public function getSalles()
             $id_equipement
         ]);
     }
-
-    public function update(
+public function update(
     $id,
     $date_seance,
     $duree,
+    $id_adherent,
     $id_salle,
     $id_activite,
     $id_equipement
@@ -131,6 +131,7 @@ public function getSalles()
     $sql = "UPDATE seance
             SET date_seance = ?,
                 duree = ?,
+                id_adherent = ?,
                 id_salle = ?,
                 id_activite = ?,
                 id_equipement = ?
@@ -141,6 +142,7 @@ public function getSalles()
     return $stmt->execute([
         $date_seance,
         $duree,
+        $id_adherent,
         $id_salle,
         $id_activite,
         $id_equipement,

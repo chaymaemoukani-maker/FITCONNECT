@@ -11,9 +11,7 @@ class SeanceController
     public function __construct()
     {
         $db = (new Database())->connect();
-
         $repository = new SeanceRepository($db);
-
         $this->service = new SeanceService($repository);
     }
 
@@ -26,13 +24,13 @@ class SeanceController
 
     public function create()
     {
-        $adherents = $this->service->getAdherents();
-        $salles = $this->service->getSalles();
-        $activites = $this->service->getActivites();
+        $adherents   = $this->service->getAdherents();
+        $salles      = $this->service->getSalles();
+        $activites   = $this->service->getActivites();
         $equipements = $this->service->getEquipements();
 
-        if(isset($_POST['ajouter']))
-        {
+        if (isset($_POST['ajouter'])) {
+
             $success = $this->service->add(
                 $_POST['date_seance'],
                 $_POST['duree'],
@@ -42,8 +40,7 @@ class SeanceController
                 $_POST['id_equipement']
             );
 
-            if(!$success)
-            {
+            if (!$success) {
                 echo "L'adhérent ne possède pas un abonnement valide.";
                 return;
             }
@@ -51,45 +48,37 @@ class SeanceController
             header("Location: index.php?module=seance");
             exit();
         }
-        $adherents = $this->service->getAdherents();
-        $salles = $this->service->getSalles();
-        $activites = $this->service->getActivites();
-        $equipements = $this->service->getEquipements();
-
-        
 
         require __DIR__ . '/../../views/seances/ajouter.php';
     }
 
-    public function edit()
-{
-    $id = $_GET['id'];
+    public function edit($id)
+    {
+        $data = $this->service->getById($id);
 
-    $data = $this->service->getById($id);
+        $adherents   = $this->service->getAdherents();
+        $salles      = $this->service->getSalles();
+        $activites   = $this->service->getActivites();
+        $equipements = $this->service->getEquipements();
 
-    $adherents  = $this->service->getAdherents();
-    $salles     = $this->service->getSalles();
-    $activites  = $this->service->getActivites();
-    $equipements = $this->service->getEquipements();
+        if (isset($_POST['modifier'])) {
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->service->update(
+                $id,
+                $_POST['date_seance'],
+                $_POST['duree'],
+                $_POST['id_adherent'],
+                $_POST['id_salle'],
+                $_POST['id_activite'],
+                $_POST['id_equipement']
+            );
 
-        $this->service->update(
-            $id,
-            $_POST['date_seance'],
-            $_POST['duree'],
-            $_POST['id_adherent'],
-            $_POST['id_salle'],
-            $_POST['id_activite'],
-            $_POST['id_equipement']
-        );
+            header("Location: index.php?module=seance");
+            exit();
+        }
 
-        header("Location: index.php?module=seance");
-        exit;
+        require __DIR__ . '/../../views/seances/modifier.php';
     }
-
-   require __DIR__ . '/../../views/seances/modifier.php';
-}
 
     public function delete($id)
     {
