@@ -75,7 +75,9 @@ class SeanceRepository
     }
     public function getAdherents()
 {
-    $sql = "SELECT id_adherent, nom, prenom FROM adherent";
+    $sql = "SELECT id_adherent, nom, prenom
+            FROM adherent
+            ORDER BY nom, prenom";
 
     $stmt = $this->conn->prepare($sql);
     $stmt->execute();

@@ -61,30 +61,35 @@ class SeanceController
         require __DIR__ . '/../../views/seances/ajouter.php';
     }
 
-    public function edit($id)
-    {
-        if(isset($_POST['modifier']))
-        {
-            $this->service->update(
-                $id,
-                $_POST['date_seance'],
-                $_POST['duree'],
-                $_POST['id_salle'],
-                $_POST['id_activite'],
-                $_POST['id_equipement']
-            );
+    public function edit()
+{
+    $id = $_GET['id'];
 
-            header("Location: index.php?module=seance");
-            exit();
-        }
+    $data = $this->service->getById($id);
 
-        $data = $this->service->getById($id);
+    $adherents  = $this->service->getAdherents();
+    $salles     = $this->service->getSalles();
+    $activites  = $this->service->getActivites();
+    $equipements = $this->service->getEquipements();
 
-        $activites = $this->service->getActivites();
-        $equipements = $this->service->getEquipements();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        require __DIR__ . '/../../views/seances/modifier.php';
+        $this->service->update(
+            $id,
+            $_POST['date_seance'],
+            $_POST['duree'],
+            $_POST['id_adherent'],
+            $_POST['id_salle'],
+            $_POST['id_activite'],
+            $_POST['id_equipement']
+        );
+
+        header("Location: index.php?module=seance");
+        exit;
     }
+
+   require __DIR__ . '/../../views/seances/modifier.php';
+}
 
     public function delete($id)
     {
