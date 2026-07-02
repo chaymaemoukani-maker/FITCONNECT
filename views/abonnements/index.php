@@ -197,13 +197,14 @@
         <table class="jp-table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>ID </th>
                     <th>Type</th>
                     <th>Prix</th>
                     <th>Date début</th>
                     <th>Date fin</th>
                     <th>Statut</th>
-                    <th>ID Adhérent</th>
+                    <th>Adhérent</th>
+                    <th>Salle</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -216,18 +217,24 @@
                     <td><?= $row['date_debut']; ?></td>
                     <td><?= $row['date_fin']; ?></td>
                     <td>
-                        <span class="jp-badge <?= $row['statut'] == 'actif' ? 'jp-badge-actif' : 'jp-badge-expire' ?>">
-                            <?= $row['statut']; ?>
-                        </span>
-                    </td>
-                    <td><?= $row['id_adherent']; ?></td>
-                    <td style="display:flex;gap:6px;align-items:center;">
-                        <a href="index.php?module=abonnement&action=edit&id=<?= $row['id_abonnement']; ?>"
-                           class="jp-btn jp-btn-edit">Modifier</a>
-                        <a href="index.php?module=abonnement&action=delete&id=<?= $row['id_abonnement']; ?>"
-                           class="jp-btn jp-btn-delete"
-                           onclick="return confirm('Supprimer cet abonnement ?')">Supprimer</a>
-                    </td>
+                         <span class="jp-badge <?= $row['statut'] == 'actif' ? 'jp-badge-actif' : 'jp-badge-expire' ?>">
+        <?= $row['statut']; ?>
+    </span>
+</td>
+
+<td><?= $row['nom']; ?> <?= $row['prenom']; ?></td>
+<td><?= $row['nom_salle']; ?></td>
+
+<td style="display:flex;gap:6px;align-items:center;">
+    <a href="index.php?module=abonnement&action=edit&id=<?= $row['id_abonnement']; ?>"
+       class="jp-btn jp-btn-edit">Modifier</a>
+
+    <a href="index.php?module=abonnement&action=delete&id=<?= $row['id_abonnement']; ?>"
+       class="jp-btn jp-btn-delete"
+       onclick="return confirm('Supprimer cet abonnement ?')">
+       Supprimer
+    </a>
+</td>
                 </tr>
             <?php } ?>
             </tbody>

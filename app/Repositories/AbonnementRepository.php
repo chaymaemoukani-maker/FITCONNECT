@@ -9,15 +9,35 @@ class AbonnementRepository
         $this->conn = $db;
     }
 
-    public function getAll()
-    {
-        $sql = "SELECT * FROM abonnement";
+   public function getAll()
+{
+    $sql = "SELECT
+                abonnement.*,
+                adherent.nom,
+                adherent.prenom,
+                salle.nom_salle
+            FROM abonnement
+            INNER JOIN adherent
+                ON abonnement.id_adherent = adherent.id_adherent
+            INNER JOIN salle
+                ON adherent.id_salle = salle.id_salle";
 
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
 
-        return $stmt;
-    }
+    return $stmt;
+}
+public function getAdherents()
+{
+    $sql = "SELECT id_adherent, nom, prenom
+            FROM adherent
+            ORDER BY nom, prenom";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
 
     public function getById($id)
     {

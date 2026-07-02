@@ -18,6 +18,10 @@ class AbonnementService
     {
         return $this->repository->getById($id);
     }
+    public function getAdherents()
+{
+    return $this->repository->getAdherents();
+}
 
     public function add(
         $type_abonnement,

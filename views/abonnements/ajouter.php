@@ -208,7 +208,13 @@
 
             <div class="jp-field">
                 <label>ID Adhérent</label>
-                <input type="number" name="id_adherent" required>
+                <select name="id_adherent">
+    <?php while($adherent = $adherents->fetch(PDO::FETCH_ASSOC)) { ?>
+        <option value="<?= $adherent['id_adherent']; ?>">
+            <?= $adherent['nom']; ?> <?= $adherent['prenom']; ?>
+        </option>
+    <?php } ?>
+</select>
             </div>
 
             <div class="jp-actions">

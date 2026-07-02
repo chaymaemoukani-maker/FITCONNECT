@@ -26,6 +26,7 @@ class AbonnementController
 
     public function create()
     {
+        $adherents = $this->service->getAdherents();
         if(isset($_POST['ajouter']))
         {
             $success = $this->service->add(
