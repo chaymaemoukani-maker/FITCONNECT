@@ -55,11 +55,14 @@ public function edit($id)
             $_POST['id_salle']
         );
 
-       header("Location: index.php?module=adherent");
+        header("Location: index.php?module=adherent");
         exit();
     }
 
     $data = $this->service->getById($id);
+
+    // مهم
+    $salles = $this->service->getSalles();
 
     require __DIR__ . '/../../views/adherents/modifier.php';
 }

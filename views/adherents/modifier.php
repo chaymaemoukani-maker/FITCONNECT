@@ -153,6 +153,25 @@
             margin-top: 40px;
             border-top: var(--jp-border);
         }
+        .jp-field select{
+    width:100%;
+    padding:10px 13px;
+    border:var(--jp-border);
+    border-radius:2px;
+    background:var(--jp-bg);
+    font-family:'Noto Sans JP', sans-serif;
+    font-size:0.9rem;
+    color:var(--jp-black);
+    transition:border-color .2s, box-shadow .2s;
+    appearance:none;
+}
+
+.jp-field select:focus{
+    outline:none;
+    border-color:var(--jp-gold);
+    box-shadow:0 0 0 3px rgba(201,168,106,.15);
+    background:var(--jp-white);
+}
     </style>
 </head>
 <body>
@@ -201,9 +220,27 @@
             </div>
 
             <div class="jp-field">
-                <label>ID Salle</label>
-                <input type="number" name="id_salle" value="<?= $data['id_salle']; ?>">
-            </div>
+    <label>Salle</label>
+
+    <select name="id_salle">
+
+        <?php while($salle = $salles->fetch(PDO::FETCH_ASSOC)) { ?>
+
+            <option
+                value="<?= $salle['id_salle']; ?>"
+                <?= $salle['id_salle'] == $data['id_salle'] ? 'selected' : ''; ?>>
+
+                <?= $salle['nom_salle']; ?>
+
+            </option>
+
+        <?php } ?>
+
+    </select>
+</div>
+
+
+</select>
 
             <div class="jp-actions">
                 <button type="submit" name="modifier" class="jp-btn jp-btn-save">Enregistrer</button>
